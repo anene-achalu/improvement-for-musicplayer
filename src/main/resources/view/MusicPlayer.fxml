@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainContainer" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.musicplayer.controller.MusicPlayerController">
+    
+    <top>
+        <Label fx:id="songTitleLabel" text="JavaFX Music Player - No song selected" 
+               styleClass="song-title" BorderPane.alignment="CENTER"/>
+    </top>
+    
+    <center>
+        <VBox spacing="20" styleClass="center-container">
+            <VBox fx:id="lyricsContainer" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </center>
+    
+    <left>
+        <VBox spacing="10" styleClass="playlist-section" prefWidth="300">
+            <Label text="Playlist" styleClass="section-title"/>
+            <Button text="Add Songs" onAction="#handleAddSongs" styleClass="add-btn"/>
+            <ListView fx:id="playlistView" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </left>
+    
+    <bottom>
+        <VBox spacing="15" styleClass="control-section">
+            <!-- Progress Section -->
+            <HBox spacing="10" alignment="CENTER" styleClass="progress-section">
+                <Label fx:id="currentTimeLabel" text="00:00" styleClass="time-label"/>
+                <Slider fx:id="progressSlider" prefWidth="400" styleClass="progress-slider"/>
+                <Label fx:id="totalTimeLabel" text="00:00" styleClass="time-label"/>
+            </HBox>
+            
+            <!-- Control Buttons -->
+            <HBox spacing="15" alignment="CENTER" styleClass="button-section">
+                <Button fx:id="prevButton" text="⏮" onAction="#handlePrevious" styleClass="control-btn"/>
+                <Button fx:id="playButton" text="▶" onAction="#handlePlay" styleClass="control-btn"/>
+                <Button fx:id="pauseButton" text="⏸" onAction="#handlePause" styleClass="control-btn" disable="true"/>
+                <Button fx:id="stopButton" text="⏹" onAction="#handleStop" styleClass="control-btn"/>
+                <Button fx:id="nextButton" text="⏭" onAction="#handleNext" styleClass="control-btn"/>
+                
+                <Separator orientation="VERTICAL" prefHeight="30"/>
+                
+                <Label text="Volume:" styleClass="volume-label"/>
+                <Slider fx:id="volumeSlider" prefWidth="100" value="50" styleClass="volume-slider"/>
+                <Button fx:id="muteButton" text="🔇" onAction="#handleMute" styleClass="control-btn"/>
+            </HBox>
+        </VBox>
+    </bottom>
+    
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+</BorderPane>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fx:id="lyricsScrollPane"
+            fitToWidth="true"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.musicplayer.controller.LyricsController">
+
+    <content>
+        <VBox fx:id="lyricsContainer"
+              spacing="8"
+              alignment="CENTER"/>
+    </content>
+</ScrollPane>
