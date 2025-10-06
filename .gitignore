@@ -1,0 +1,69 @@
+# Java & Maven
+target/
+*.log
+*.class
+.classpath
+.project
+.settings/
+dependency-reduced-pom.xml
+release.properties
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+buildNumber.properties
+
+# NetBeans
+nbactions.xml
+build/
+dist/
+nbproject/private/
+nbproject/.*.properties
+
+# Eclipse
+.metadata/
+local.properties
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+
+# OS files
+Thumbs.db
+ehthumbs.db
+.DS_Store
+Icon?
+desktop.ini
+
+# Gradle
+.gradle/
+
+# Logs
+logs/
+*.log
+
+# Credentials, secrets, and system-specific files
+*.keystore
+*.jks
+secret-*.properties
+*.env
+env/
+
+# Java Web/IDE artifacts
+*.war
+*.ear
+
+# JavaFX packaging / jars
+*.jar
+*.jardesc
+
+# Misc
+*.bak
+*.swp
+*~
