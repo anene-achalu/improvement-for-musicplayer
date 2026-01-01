@@ -99,3 +99,21 @@ Icon-Based Controls:
 A clean, modern interface using intuitive icons for all major controls.
 Tooltips: 
 Hover over any control to see a helpful tooltip explaining its function.
+
+
+How to run (quick)
+Recommended: Open the project in NetBeans (it was developed with NetBeans). Run com.musicplayer.MusicApp from the IDE.
+
+Using Maven (command line / PowerShell):
+
+First, fix the mainClass entry in the pom.xml plugin configuration to point to com.musicplayer.MusicApp (search for mainClass and replace the value).
+
+Then run (PowerShell):
+
+mvn clean package; mvn javafx:run
+
+If the plugin still references the wrong main class you can run the application directly from the IDE by running the `MusicApp` main method.
+
+Quick development tips
+If JavaFX Media can't play a file, verify the audio file is not DRM protected and is supported by JavaFX Media on your platform.
+To add a lyrics file next to a song, create the folder src/main/resources/ly
