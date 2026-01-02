@@ -1,5 +1,6 @@
+com\musicplayer\controller\MusicPlayerController$FavoriteListCell.class
+com\musicplayer\controller\MusicPlayerController$RepeatMode.class
 com\musicplayer\controller\MusicPlayerController$1.class
-com\musicplayer\controller\MusicPlayerController$2.class
 com\musicplayer\controller\MusicPlayerController.class
 com\musicplayer\model\Song.class
 com\musicplayer\model\Playlist.class

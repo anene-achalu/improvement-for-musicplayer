@@ -14,13 +14,13 @@ public class MusicApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MusicPlayer.fxml"));
         Parent root = loader.load();
 
-        Scene scene = new Scene(root, 1000, 700);
+        Scene scene = new Scene(root, 1200, 800);
         scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
 
         primaryStage.setTitle("JavaFX Music Player - MVC Architecture");
         primaryStage.setScene(scene);
-        primaryStage.setMinWidth(900);
-        primaryStage.setMinHeight(650);
+        primaryStage.setMinWidth(1000);
+        primaryStage.setMinHeight(700);
         primaryStage.show();
     }
 

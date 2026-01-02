@@ -1,15 +1,17 @@
-/* === Modern Dark Theme for Music Player === */
+/* === Modern Light Theme for Music Player === */
 
 /* --- Base Theme & Typography --- */
 .root {
     -fx-font-family: "Segoe UI", Arial, sans-serif;
-    -fx-background-color: #121212; /* Deep Black */
+    -fx-background-color: #F5F5F5; /* Light Gray */
 }
 
 .main-container,
 .playlist-section,
 .control-section {
-    -fx-background-color: #1E1E1E; /* Dark Gray */
+    -fx-background-color: #FFFFFF; /* White */
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1px;
 }
 
 /* --- Text Colors --- */
@@ -18,29 +20,29 @@
 .volume-label,
 .section-title,
 .list-cell {
-    -fx-text-fill: #FFFFFF; /* White */
+    -fx-text-fill: #212121; /* Dark Text */
 }
 
 .instruction, .no-lyrics,
 .control-btn:disabled,
 .list-cell:empty {
-    -fx-text-fill: #B3B3B3; /* Light Gray */
+    -fx-text-fill: #757575; /* Medium Gray */
 }
 
 /* --- Lyrics Styling --- */
 .center-container {
     -fx-background-color: #FFFFFF; /* White background for lyrics */
-    -fx-border-color: #9C27B0;
+    -fx-border-color: #E0E0E0;
     -fx-border-width: 1px;
 }
 
 .lyric-line {
-    -fx-text-fill: #000000; /* Black text for lyrics */
+    -fx-text-fill: #212121; /* Dark Text for lyrics */
     -fx-font-size: 16px;
 }
 
 .current-lyric {
-    -fx-text-fill: #9C27B0; /* Vibrant Purple for highlighted lyric on white background */
+    -fx-text-fill: #9C27B0; /* Vibrant Purple for highlighted lyric */
     -fx-font-weight: bold;
 }
 
@@ -56,9 +58,9 @@
 /* --- Interactive Elements & Buttons --- */
 .control-btn,
 .add-btn {
-    -fx-background-color: #1E1E1E; /* Match dark gray base */
-    -fx-text-fill: #FFFFFF;
-    -fx-border-color: #B3B3B3;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #212121;
+    -fx-border-color: #BDBDBD;
     -fx-border-width: 1px;
     -fx-border-radius: 25px;
     -fx-background-radius: 25px;
@@ -83,11 +85,13 @@
 .repeat-all, .repeat-one {
     -fx-background-color: #9C27B0; /* Vibrant Purple when active */
     -fx-border-color: #9C27B0;
+    -fx-text-fill: #FFFFFF;
 }
 
 #stopButton {
     -fx-background-color: #FF5252; /* Red for stop */
     -fx-border-color: #FF5252;
+    -fx-text-fill: #FFFFFF;
 }
 
 #stopButton:hover {
@@ -96,12 +100,12 @@
 
 /* --- Other UI Components --- */
 .list-view {
-    -fx-background-color: #1E1E1E;
-    -fx-border-color: transparent;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E0E0E0;
 }
 
 .separator:vertical .line {
-    -fx-border-color: #B3B3B3;
+    -fx-border-color: #BDBDBD;
 }
 
 .scroll-bar:vertical .thumb {
@@ -109,7 +113,7 @@
 }
 
 .context-menu {
-    -fx-background-color: #1E1E1E;
+    -fx-background-color: #FFFFFF;
     -fx-border-color: #9C27B0;
 }
 
@@ -118,11 +122,15 @@
 }
 
 .menu-item .label {
+    -fx-text-fill: #212121;
+}
+
+.menu-item:focused .label {
     -fx-text-fill: #FFFFFF;
 }
 
 .tooltip {
-    -fx-background-color: #1E1E1E;
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #212121;
     -fx-border-color: #9C27B0;
 }

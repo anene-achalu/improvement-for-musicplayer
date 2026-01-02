@@ -3,6 +3,7 @@ package com.musicplayer.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
 
 public class Playlist {
@@ -31,6 +32,10 @@ public class Playlist {
 
     public void clear() {
         songs.clear();
+    }
+
+    public void shuffle() {
+        FXCollections.shuffle(songs);
     }
 
     public ObservableList<Song> getSongs() {

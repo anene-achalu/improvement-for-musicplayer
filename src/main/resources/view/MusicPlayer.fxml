@@ -2,57 +2,128 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="mainContainer" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+<BorderPane fx:id="mainContainer"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.musicplayer.controller.MusicPlayerController">
-    
+
+    <!-- TOP: MenuBar + Now Playing + Album Art -->
     <top>
-        <Label fx:id="songTitleLabel" text="JavaFX Music Player - No song selected" 
-               styleClass="song-title" BorderPane.alignment="CENTER"/>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="Save Playlist" onAction="#handleSavePlaylist"/>
+                    <MenuItem text="Load Playlist" onAction="#handleLoadPlaylist"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="Exit" onAction="#handleExit"/>
+                </Menu>
+                <Menu text="Theme">
+                    <CheckMenuItem fx:id="themeMenuItem" text="Light Mode" onAction="#handleThemeToggle"/>
+                </Menu>
+            </MenuBar>
+
+            <VBox spacing="5" alignment="CENTER" styleClass="now-playing-section">
+                <padding>
+                    <Insets top="5" bottom="5" left="5" right="5"/>
+                </padding>
+
+                <ImageView fx:id="albumArtImageView"
+                           fitHeight="100.0"
+                           fitWidth="100.0"
+                       preserveRatio="true"
+                       pickOnBounds="true">
+                    <!-- No default image → we'll set it from code -->
+                </ImageView>
+
+                <!-- Song Title -->
+                <Label fx:id="songTitleLabel"
+                       text="JavaFX Music Player - No song selected"
+                       styleClass="song-title"
+                       wrapText="true"
+                       textAlignment="CENTER"/>
+            </VBox>
+        </VBox>
     </top>
-    
+
+    <!-- CENTER: Lyrics -->
     <center>
-        <VBox spacing="20" styleClass="center-container">
+        <VBox spacing="10" styleClass="center-container" VBox.vgrow="ALWAYS">
+            <padding>
+                <Insets top="10" bottom="10" left="10" right="10"/>
+            </padding>
             <VBox fx:id="lyricsContainer" VBox.vgrow="ALWAYS"/>
         </VBox>
     </center>
-    
+
+    <!-- LEFT: Playlist -->
     <left>
-        <VBox spacing="10" styleClass="playlist-section" prefWidth="300">
-            <Label text="Playlist" styleClass="section-title"/>
-            <Button text="Add Songs" onAction="#handleAddSongs" styleClass="add-btn"/>
+        <VBox spacing="10" styleClass="playlist-section" prefWidth="400">
+            <padding>
+                <Insets top="10" bottom="10" left="10" right="10"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Playlist" styleClass="section-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <ToggleButton fx:id="showFavoritesButton" text="Favorites" onAction="#handleShowFavorites" styleClass="add-btn"/>
+            </HBox>
+
+            <TextField fx:id="searchField" promptText="Search..." HBox.hgrow="ALWAYS"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="Add Songs" onAction="#handleAddSongs" styleClass="add-btn"/>
+                <Button text="Remove Song" onAction="#handleRemoveSong" styleClass="add-btn"/>
+            </HBox>
+
             <ListView fx:id="playlistView" VBox.vgrow="ALWAYS"/>
         </VBox>
     </left>
-    
+
+    <!-- BOTTOM: Controls -->
     <bottom>
-        <VBox spacing="15" styleClass="control-section">
-            <!-- Progress Section -->
+        <VBox spacing="10" styleClass="control-section">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <!-- Progress -->
             <HBox spacing="10" alignment="CENTER" styleClass="progress-section">
                 <Label fx:id="currentTimeLabel" text="00:00" styleClass="time-label"/>
-                <Slider fx:id="progressSlider" prefWidth="400" styleClass="progress-slider"/>
+                <Slider fx:id="progressSlider" prefWidth="500" styleClass="progress-slider" HBox.hgrow="ALWAYS"/>
                 <Label fx:id="totalTimeLabel" text="00:00" styleClass="time-label"/>
             </HBox>
-            
-            <!-- Control Buttons -->
+
+            <!-- Buttons -->
             <HBox spacing="15" alignment="CENTER" styleClass="button-section">
-                <Button fx:id="prevButton" text="⏮" onAction="#handlePrevious" styleClass="control-btn"/>
-                <Button fx:id="playButton" text="▶" onAction="#handlePlay" styleClass="control-btn"/>
-                <Button fx:id="pauseButton" text="⏸" onAction="#handlePause" styleClass="control-btn" disable="true"/>
-                <Button fx:id="stopButton" text="⏹" onAction="#handleStop" styleClass="control-btn"/>
-                <Button fx:id="nextButton" text="⏭" onAction="#handleNext" styleClass="control-btn"/>
-                
-                <Separator orientation="VERTICAL" prefHeight="30"/>
-                
+                <ToggleButton fx:id="shuffleButton" text="🔀" onAction="#handleShuffle" styleClass="control-btn">
+                    <tooltip><Tooltip text="Shuffle"/></tooltip>
+                </ToggleButton>
+                <Button fx:id="prevButton" text="⏮" onAction="#handlePrevious" styleClass="control-btn">
+                    <tooltip><Tooltip text="Previous"/></tooltip>
+                </Button>
+                <ToggleButton fx:id="playPauseButton" text="▶" onAction="#handlePlayPause" styleClass="control-btn">
+                    <tooltip><Tooltip text="Play/Pause"/></tooltip>
+                </ToggleButton>
+                <Button fx:id="stopButton" text="⏹" onAction="#handleStop" styleClass="control-btn">
+                    <tooltip><Tooltip text="Stop"/></tooltip>
+                </Button>
+                <Button fx:id="nextButton" text="⏭" onAction="#handleNext" styleClass="control-btn">
+                    <tooltip><Tooltip text="Next"/></tooltip>
+                </Button>
+                <Button fx:id="repeatButton" text="🔁" onAction="#handleRepeat" styleClass="control-btn"/>
+
+                <Separator orientation="VERTICAL" prefHeight="40"/>
+
                 <Label text="Volume:" styleClass="volume-label"/>
-                <Slider fx:id="volumeSlider" prefWidth="100" value="50" styleClass="volume-slider"/>
-                <Button fx:id="muteButton" text="🔇" onAction="#handleMute" styleClass="control-btn"/>
+                <Slider fx:id="volumeSlider" prefWidth="120" value="70" styleClass="volume-slider"/>
+                <Label fx:id="volumeLabel" text="70%" styleClass="time-label"/>
+                <Button fx:id="muteButton" text="🔊" onAction="#handleMute" styleClass="control-btn">
+                    <tooltip><Tooltip text="Mute/Unmute"/></tooltip>
+                </Button>
             </HBox>
         </VBox>
     </bottom>
-    
-    <padding>
-        <Insets top="15" right="15" bottom="15" left="15"/>
-    </padding>
+
 </BorderPane>

@@ -5,6 +5,8 @@ module com.musicplayer {
     requires javafx.graphics;  // Add this
     requires javafx.base;      // Add this
     requires java.desktop;     // Add this for file operations
+    requires okhttp3;
+    requires org.json;
 
     // Open packages to JavaFX for reflection (FXML loading)
     opens com.musicplayer to javafx.fxml;
